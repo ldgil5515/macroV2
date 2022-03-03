@@ -11,6 +11,7 @@ class Ckey_macroApp : public CWinAppEx
 public:
 	Ckey_macroApp();
 
+
 	virtual BOOL InitInstance();
 
 	DECLARE_MESSAGE_MAP()

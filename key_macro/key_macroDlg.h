@@ -3,6 +3,7 @@
 #include "Hyperlink.h"
 #include "DialogCommon.h"
 #include "resource.h"
+#include "RsPort.h"
 
 class Ckey_macroDlg : public CDialogCommon
 {
@@ -14,6 +15,7 @@ public:
 
 	void OnKeyMouseEvent (BYTE vk_code, bool vk_pressed, bool key);
 	CComboBox _listCommPort;
+	CRsPort m_cRsPort;
 
 private:
 	DWORD _macro_exec_time;
@@ -65,4 +67,5 @@ protected:
 public:
 	afx_msg void OnCbnSelchangeCombo1();
 	afx_msg void OnBnClickedButtonSerialConnect();
+	afx_msg void OnCbnSelchangeListCommPort();
 };

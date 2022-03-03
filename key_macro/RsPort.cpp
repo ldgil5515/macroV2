@@ -15,23 +15,21 @@ static char THIS_FILE[]=__FILE__;
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CRsPort::CRsPort( CString m_portName )
+CRsPort::CRsPort()
 {
    dcb_setup.BaudRate = CBR_19200;
    dcb_setup.ByteSize = 8;
    dcb_setup.Parity   = NOPARITY;
    dcb_setup.StopBits = ONESTOPBIT;
-   initComport( m_portName );
 }
 
 
-CRsPort::CRsPort( CString m_portName, DWORD BaudRate, BYTE ByteSize, BYTE Parity, BYTE StopBits )
+CRsPort::CRsPort(DWORD BaudRate, BYTE ByteSize, BYTE Parity, BYTE StopBits )
 {
    dcb_setup.BaudRate = BaudRate;
    dcb_setup.ByteSize = ByteSize;
    dcb_setup.Parity   = Parity;
    dcb_setup.StopBits = StopBits;
-   initComport( m_portName );
 }
 
 
@@ -40,18 +38,18 @@ CRsPort::~CRsPort()
    CloseCommPort();
 }
 
-void CRsPort::initComport(CString m_portName)
+BOOL CRsPort::initComport(CString m_portName)
 {
    COMMTIMEOUTS  commTimeOuts;
 
-   m_idComDev = CreateFile( (LPCTSTR) m_portName, GENERIC_READ | GENERIC_WRITE, 
+   m_idComDev = CreateFile( (LPCTSTR)m_portName, GENERIC_READ | GENERIC_WRITE,
 	   0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL );
+
 
    if( m_idComDev == (HANDLE) -1) 
    {
 		CloseHandle( m_idComDev );
 		m_Connect = FALSE;
-		//AfxMessageBox(_T("WARNING : 포트를 여는데 실패하였습니다.")); 
    } 
    else 
    {
@@ -72,6 +70,8 @@ void CRsPort::initComport(CString m_portName)
 		osRead.hEvent  = CreateEvent(NULL, TRUE, FALSE, NULL);
 		osWrite.hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
    }
+
+   return m_Connect;
 }
 
 BOOL CRsPort::SetupConnection()

@@ -1,5 +1,3 @@
-#include "key_macroDlg.h"
-
 #pragma once
 
 #define		NUL		0x00
@@ -27,22 +25,22 @@ class CRsPort
 public:
 	BOOL           m_Connect;
     HANDLE         m_idComDev;
+	CString		   m_ComPort;
 
 public:
+	BOOL initComport(CString m_portName);
 	int ReadCommPort( unsigned char *message, DWORD length);
 	int WriteCommPort( unsigned char* message, DWORD dwLength);
 	bool IsCommPortOpen();
 	static void loadListCommPort(CComboBox &listCommPort);
-	CRsPort(CString m_portName);
-    CRsPort( CString m_portName, DWORD BaudRate, BYTE ByteSize, BYTE Parity, BYTE StopBits );
+	CRsPort();
+    CRsPort(DWORD BaudRate, BYTE ByteSize, BYTE Parity, BYTE StopBits );
 	virtual ~CRsPort();
 
 protected:
 	void CloseCommPort(void);
 	BOOL SetupConnection(void);
-	void initComport( CString m_portName );
     OVERLAPPED     osWrite;
     OVERLAPPED     osRead;
 	DCB            dcb_setup;
-
 };

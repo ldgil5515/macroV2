@@ -17,7 +17,6 @@
 #include "common.h"
 #include "AppIni.h"
 #include "log.h"
-#include "RsPort.h"
 
 
 static bool _macro_changed = false;
@@ -26,7 +25,6 @@ static CDialogUserLoop *_userLoopDlg = NULL;
 Ckey_macroDlg         *g_macroDlg  = NULL;
 CDialogKeyMouseStatus *g_statusDlg = NULL;
 CDialogMacroDebug     *g_debugDlg  = NULL;
-CRsPort               *cRsPort     = NULL;
 
 
 // Multimedia timer로 Macro 실행에 실시간성 확보
@@ -108,6 +106,7 @@ BEGIN_MESSAGE_MAP(Ckey_macroDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON_KEY_MOUSE_STATUS, &Ckey_macroDlg::OnBnClickedButtonKeyMouseStatus)
 	ON_BN_CLICKED(IDC_BUTTON_MACRO_DEBUG, &Ckey_macroDlg::OnBnClickedButtonMacroDebug)
 	ON_BN_CLICKED(IDC_BUTTON_SERIAL_CONNECT, &Ckey_macroDlg::OnBnClickedButtonSerialConnect)
+	ON_CBN_SELCHANGE(IDC_LIST_COMM_PORT, &Ckey_macroDlg::OnCbnSelchangeListCommPort)
 END_MESSAGE_MAP()
 
 
@@ -219,7 +218,8 @@ BOOL Ckey_macroDlg::OnInitDialog()
 	SetTimer (1002, 100, NULL);
 	SetTimer (1003, 250, NULL);
 
-	cRsPort->loadListCommPort(_listCommPort);
+	CString str;
+	m_cRsPort.loadListCommPort(_listCommPort);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -799,5 +799,15 @@ void Ckey_macroDlg::OnBnClickedButtonMacroDebug()
 
 void Ckey_macroDlg::OnBnClickedButtonSerialConnect()
 {
+	CString comPort;
+	_listCommPort.GetLBText(_listCommPort.GetCurSel(), comPort);
+	if (m_cRsPort.initComport(comPort) == TRUE) {
+		AfxMessageBox(("%s A", comPort));
+	}
+	else AfxMessageBox(_T("WARNING : 포트를 여는데 실패하였습니다."));
+}
 
+void Ckey_macroDlg::OnCbnSelchangeListCommPort()
+{
+	UpdateData();
 }
