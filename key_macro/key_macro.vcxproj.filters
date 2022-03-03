@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Dialog">
+      <UniqueIdentifier>{f579e5a9-e954-4781-bfcc-d47289ad34cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dialog\Edit">
+      <UniqueIdentifier>{8f096e8e-f738-4f54-90dd-4d594735f94f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Macro">
+      <UniqueIdentifier>{9fcd001b-3473-46aa-906a-5020f548f76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\etc">
+      <UniqueIdentifier>{e240258e-e47b-45cd-add0-a844edf53d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppIni.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="key_macro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="key_macroDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogCommon.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogConfig.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogKeyMouseStatus.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMacroDebug.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMacroEdit.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMacroRec.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMacroStartStop.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogUserLoop.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="EditEx.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ListBoxEx.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogCS.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogDelay.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogKeyboard.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogLoop.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMacro.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMouse.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogString.cpp">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="key_hook.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="macro_def.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="macro_file.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="macro_item.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="macro_str.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="virtual_key.cpp">
+      <Filter>Source Files\Macro</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="EditLogB.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="GdiObjects.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="hangul.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="HyperLink.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="ini.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="MmTimer.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="TabDialog.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="TrayIcon.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="RsPort.cpp">
+      <Filter>Source Files\etc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppIni.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="key_macro.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="key_macroDlg.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogCommon.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogConfig.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogKeyMouseStatus.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMacroDebug.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMacroEdit.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMacroRec.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMacroStartStop.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogUserLoop.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="EditEx.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ListBoxEx.h">
+      <Filter>Source Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogCS.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogDelay.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogKeyboard.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogLoop.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMacro.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMouse.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogString.h">
+      <Filter>Source Files\Dialog\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="key_hook.h">
+      <Filter>Source Files\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_def.h">
+      <Filter>Source Files\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_file.h">
+      <Filter>Source Files\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_item.h">
+      <Filter>Source Files\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="virtual_key.h">
+      <Filter>Source Files\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="EditLogB.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="GdiObjects.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="hangul.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="HyperLink.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="ini.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="MmTimer.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="ScopedLock.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="TabDialog.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="TrayIcon.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="RsPort.h">
+      <Filter>Source Files\etc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\idr_main.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\key_macro.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lamp_dis.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lamp_off.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lamp_on.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\key_macro.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="key_macro.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\key_macro.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

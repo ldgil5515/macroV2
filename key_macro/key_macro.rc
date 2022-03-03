@@ -16,13 +16,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Korean resources
+// 한국어(대한민국) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
-#ifdef _WIN32
 LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
 #pragma code_page(949)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -71,7 +69,9 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\key_macro.ico"
+
 IDR_MAINFRAME2          ICON                    "res\\idr_main.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -99,13 +99,13 @@ BEGIN
     LTEXT           "Static",IDC_STATIC_REC_COUNT2,6,158,69,10
     PUSHBUTTON      "^",IDC_BUTTON_UP2,102,156,17,14
     PUSHBUTTON      "v",IDC_BUTTON_DOWN2,120,156,17,14
-    LTEXT           "Version: --- (Updated: ---)",IDC_STATIC_VERSION,7,176,169,8
-    LTEXT           "http://blog.daum.net/pg365/250",IDC_STATIC_HOMEPAGE,7,188,169,8
     PUSHBUTTON      "설정",IDC_BUTTON_CONFIG,7,203,38,14
     PUSHBUTTON      "종료",ID_QUIT,138,203,38,14
     LISTBOX         IDC_LIST_MACROS2,7,71,129,84,LBS_MULTIPLESEL | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "입력상태",IDC_BUTTON_KEY_MOUSE_STATUS,50,203,38,14
     PUSHBUTTON      "실행상태",IDC_BUTTON_MACRO_DEBUG,93,203,38,14
+    COMBOBOX        IDC_LIST_COMM_PORT,20,178,51,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "연결",IDC_BUTTON_SERIAL_CONNECT,79,177,38,14
 END
 
 IDD_DIALOG_ADD_KEY DIALOGEX 0, 0, 162, 183
@@ -489,27 +489,27 @@ BEGIN
     LTEXT           "입력 키:",IDC_STATIC,24,19,30,8
     EDITTEXT        IDC_EDIT_INPUT_KEY,58,15,149,14,ES_AUTOHSCROLL | ES_READONLY
     LTEXT           "제어 키:",IDC_STATIC,24,35,30,8
-    CONTROL         143,IDC_STATIC_LAMP_CTRL,"Static",SS_BITMAP,58,35,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_CTRL,"Static",SS_BITMAP,58,35,9,8
     LTEXT           "Ctrl",IDC_STATIC,69,35,12,8
-    CONTROL         143,IDC_STATIC_LAMP_ALT,"Static",SS_BITMAP,88,35,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_ALT,"Static",SS_BITMAP,88,35,9,8
     LTEXT           "Alt",IDC_STATIC,99,35,10,8
-    CONTROL         143,IDC_STATIC_LAMP_SHIFT,"Static",SS_BITMAP,116,35,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_SHIFT,"Static",SS_BITMAP,116,35,9,8
     LTEXT           "Shift",IDC_STATIC,126,35,16,8
     LTEXT           "IME 한/영 키:",IDC_STATIC,8,53,46,8
     EDITTEXT        IDC_EDIT_IME_HAN_ENG,58,50,79,14,ES_AUTOHSCROLL | ES_READONLY
     LTEXT           "마우스 위치:",IDC_STATIC,8,84,46,8
     EDITTEXT        IDC_EDIT_MOUSE_POS,58,81,79,14,ES_AUTOHSCROLL | ES_READONLY
     LTEXT           "마우스 버튼:",IDC_STATIC,8,103,46,8
-    CONTROL         143,IDC_STATIC_LAMP_LEFT,"Static",SS_BITMAP,58,103,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_LEFT,"Static",SS_BITMAP,58,103,9,8
     LTEXT           "Left",IDC_STATIC,69,103,14,8
-    CONTROL         143,IDC_STATIC_LAMP_MIDDLE,"Static",SS_BITMAP,87,103,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_MIDDLE,"Static",SS_BITMAP,87,103,9,8
     LTEXT           "Middle",IDC_STATIC,98,103,21,8
-    CONTROL         143,IDC_STATIC_LAMP_RIGHT,"Static",SS_BITMAP,122,103,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_RIGHT,"Static",SS_BITMAP,122,103,9,8
     LTEXT           "Right",IDC_STATIC,133,103,18,8
-    CONTROL         143,IDC_STATIC_LAMP_X1,"Static",SS_BITMAP,155,103,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_X1,"Static",SS_BITMAP,155,103,9,8
     LTEXT           "X1",IDC_STATIC,166,103,9,8
     LTEXT           "X2",IDC_STATIC,190,103,9,8
-    CONTROL         143,IDC_STATIC_LAMP_X2,"Static",SS_BITMAP,179,103,9,8
+    CONTROL         IDB_BITMAP_LAMP_OFF,IDC_STATIC_LAMP_X2,"Static",SS_BITMAP,179,103,9,8
 END
 
 IDD_DIALOG_MACRO_DEBUG DIALOGEX 0, 0, 215, 241
@@ -577,7 +577,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_KEY_MACRO_DIALOG, DIALOG
     BEGIN
@@ -766,8 +766,11 @@ END
 //
 
 IDB_BITMAP_LAMP_DISABLED BITMAP                  "res\\lamp_dis.bmp"
+
 IDB_BITMAP_LAMP_OFF     BITMAP                  "res\\lamp_off.bmp"
+
 IDB_BITMAP_LAMP_ON      BITMAP                  "res\\lamp_on.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -802,7 +805,18 @@ BEGIN
     0
 END
 
-#endif    // Korean resources
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_KEY_MACRO_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

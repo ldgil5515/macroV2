@@ -32,6 +32,7 @@ void sKeybd::Step (bool vk_pressed[256])
 		else {
 			int flags = extended ? KEYEVENTF_EXTENDEDKEY : 0;
 			keybd_event (vk_code, scan_code, flags, EX_KEY_MACRO_ITSELF);
+			printf("%d / %d / %d", vk_code, scan_code, flags);
 		}
 		vk_pressed[(BYTE)vk_code] = true;
 	}
@@ -45,6 +46,7 @@ void sKeybd::Step (bool vk_pressed[256])
 			int flags = KEYEVENTF_KEYUP;
 			if (extended) flags |= KEYEVENTF_EXTENDEDKEY;
 			keybd_event (vk_code, scan_code, flags, EX_KEY_MACRO_ITSELF);
+			printf("%d / %d / %d", vk_code, scan_code, flags);
 		}
 		vk_pressed[(BYTE)vk_code] = false;
 	}

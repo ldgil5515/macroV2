@@ -5,6 +5,7 @@
 #include "AppIni.h"
 #include "common.h"
 #include "GdiObjects.h"
+#include "RsPort.h"
 
 
 BEGIN_MESSAGE_MAP(Ckey_macroApp, CWinAppEx)

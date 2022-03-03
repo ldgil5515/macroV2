@@ -17,6 +17,7 @@
 #include "common.h"
 #include "AppIni.h"
 #include "log.h"
+#include "RsPort.h"
 
 
 static bool _macro_changed = false;
@@ -25,6 +26,7 @@ static CDialogUserLoop *_userLoopDlg = NULL;
 Ckey_macroDlg         *g_macroDlg  = NULL;
 CDialogKeyMouseStatus *g_statusDlg = NULL;
 CDialogMacroDebug     *g_debugDlg  = NULL;
+CRsPort               *cRsPort     = NULL;
 
 
 // Multimedia timer로 Macro 실행에 실시간성 확보
@@ -77,7 +79,7 @@ void Ckey_macroDlg::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST_MACROS, _listMacros);
 	DDX_Control(pDX, IDC_LIST_MACROS2, _listMacros2);
-	DDX_Control(pDX, IDC_STATIC_HOMEPAGE, _staticHomepage);
+	DDX_Control(pDX, IDC_LIST_COMM_PORT, _listCommPort);
 }
 
 BEGIN_MESSAGE_MAP(Ckey_macroDlg, CDialog)
@@ -105,6 +107,7 @@ BEGIN_MESSAGE_MAP(Ckey_macroDlg, CDialog)
 	ON_BN_CLICKED(ID_QUIT, &Ckey_macroDlg::OnBnClickedQuit)
 	ON_BN_CLICKED(IDC_BUTTON_KEY_MOUSE_STATUS, &Ckey_macroDlg::OnBnClickedButtonKeyMouseStatus)
 	ON_BN_CLICKED(IDC_BUTTON_MACRO_DEBUG, &Ckey_macroDlg::OnBnClickedButtonMacroDebug)
+	ON_BN_CLICKED(IDC_BUTTON_SERIAL_CONNECT, &Ckey_macroDlg::OnBnClickedButtonSerialConnect)
 END_MESSAGE_MAP()
 
 
@@ -165,12 +168,6 @@ BOOL Ckey_macroDlg::OnInitDialog()
 	CheckDlgButton (IDC_RADIO_MACRO_RUN,   g_ini.macroOptions.MACRO_RUN ? BST_CHECKED : BST_UNCHECKED);
 	CheckDlgButton (IDC_RADIO_MACRO_EDIT, !g_ini.macroOptions.MACRO_RUN ? BST_CHECKED : BST_UNCHECKED);
 	SetDlgItemText (IDC_EDIT_MACRO_FILE, g_ini.macroFileName);
-	
-	SetDlgItemText (IDC_STATIC_VERSION, GetVersionInfo("ProductVersion"));
-
-	_staticHomepage.SetURL("http://blog.daum.net/pg365/250");
-	_staticHomepage.SetToolTipText("키보드/마우스 매크로 프로그램 웹페이지 방문");
-	_staticHomepage.SetLinkCursor(::LoadCursor(0, MAKEINTRESOURCE(IDC_HAND)));
 
 	// 만일 트레이 아이콘으로 최소화 설정이 있으면, 트레이 아이콘으로 최소화 한다.
 	if (g_ini.macroOptions.TRAY_AT_STARTUP) {
@@ -222,6 +219,7 @@ BOOL Ckey_macroDlg::OnInitDialog()
 	SetTimer (1002, 100, NULL);
 	SetTimer (1003, 250, NULL);
 
+	cRsPort->loadListCommPort(_listCommPort);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -799,3 +797,7 @@ void Ckey_macroDlg::OnBnClickedButtonMacroDebug()
 	g_debugDlg->ShowWindow (g_debugDlg->IsWindowVisible () ? SW_HIDE : SW_SHOW);
 }
 
+void Ckey_macroDlg::OnBnClickedButtonSerialConnect()
+{
+
+}

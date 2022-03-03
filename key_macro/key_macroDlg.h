@@ -2,6 +2,7 @@
 #include "afxwin.h"
 #include "Hyperlink.h"
 #include "DialogCommon.h"
+#include "resource.h"
 
 class Ckey_macroDlg : public CDialogCommon
 {
@@ -12,6 +13,7 @@ public:
 	enum { IDD = IDD_KEY_MACRO_DIALOG };
 
 	void OnKeyMouseEvent (BYTE vk_code, bool vk_pressed, bool key);
+	CComboBox _listCommPort;
 
 private:
 	DWORD _macro_exec_time;
@@ -19,8 +21,7 @@ private:
 
 	CListBox _listMacros;
 	CListBox _listMacros2;
-	CHyperLink _staticHomepage;
-
+	
 	void ToggleKeyMessage ();
 	void SetTextRecCount();
 	void EnableDlgItem(BOOL enable);
@@ -61,4 +62,7 @@ protected:
 	afx_msg void OnLbnDblclkListMacros();
 	afx_msg void OnBnClickedButtonKeyMouseStatus();
 	afx_msg void OnBnClickedButtonMacroDebug();
+public:
+	afx_msg void OnCbnSelchangeCombo1();
+	afx_msg void OnBnClickedButtonSerialConnect();
 };
