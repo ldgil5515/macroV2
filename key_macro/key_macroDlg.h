@@ -16,6 +16,7 @@ public:
 	void OnKeyMouseEvent (BYTE vk_code, bool vk_pressed, bool key);
 	CComboBox _listCommPort;
 	CRsPort m_cRsPort;
+	CButton m_Commconnect;
 
 private:
 	DWORD _macro_exec_time;

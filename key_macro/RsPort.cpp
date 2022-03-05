@@ -17,7 +17,7 @@ static char THIS_FILE[]=__FILE__;
 
 CRsPort::CRsPort()
 {
-   dcb_setup.BaudRate = CBR_19200;
+   dcb_setup.BaudRate = CBR_115200;
    dcb_setup.ByteSize = 8;
    dcb_setup.Parity   = NOPARITY;
    dcb_setup.StopBits = ONESTOPBIT;
@@ -46,7 +46,7 @@ BOOL CRsPort::initComport(CString m_portName)
 	   0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL );
 
 
-   if( m_idComDev == (HANDLE) -1) 
+   if( m_idComDev == NULL) 
    {
 		CloseHandle( m_idComDev );
 		m_Connect = FALSE;
@@ -117,10 +117,13 @@ int CRsPort::WriteCommPort(unsigned char *message, DWORD dwLength)
 
 int CRsPort::ReadCommPort(unsigned char *message, DWORD length)
 {
+   BOOL		fReadStat;
    COMSTAT  ComStat;
    DWORD    dwErrorFlags;
    DWORD    dwLength;
+   DWORD	dwError;
    DWORD	dwReadLength = 0;
+   char     szError[10];
 
    CStringA strTemp;
    strTemp.Format("%s",message);
@@ -130,20 +133,38 @@ int CRsPort::ReadCommPort(unsigned char *message, DWORD length)
    {
 	   ClearCommError( m_idComDev, &dwErrorFlags, &ComStat );
 	   dwLength = min((DWORD) length, ComStat.cbInQue);
-	   ReadFile( m_idComDev, message, dwLength, &dwReadLength, &osRead );
-   }
 
-   if(dwReadLength == 0)
-   {
-	   CStringA str;
-	   str.Format("%s", message);
-
-	   if(strTemp != str)
-	   {	   
-		   return str.GetLength();
-	   }	   
+	   if (dwLength > 0)
+	   {
+		   fReadStat = ReadFile(m_idComDev, message, dwLength, &dwReadLength, &osRead);
+		   if (!fReadStat)
+		   {
+			   if (GetLastError() == ERROR_IO_PENDING)
+			   {
+				   while (!GetOverlappedResult(m_idComDev, &osRead, &dwLength, TRUE))
+				   {
+					   dwError = GetLastError();
+					   if (dwError == ERROR_IO_INCOMPLETE)
+					   {
+						   continue;
+					   }
+					   else
+					   {
+						   wsprintf(szError, "<CE-%u>\n\r", dwError);
+						   printf(szError);
+						   ClearCommError(m_idComDev, &dwErrorFlags, &ComStat);
+						   break;
+					   }
+				   }
+			   }
+			   else
+			   {
+				   dwLength = 0;
+				   ClearCommError(m_idComDev, &dwErrorFlags, &ComStat);
+			   }
+		   }
+	   }
    }
-  
 
    return dwReadLength;
 }

@@ -78,6 +78,7 @@ void Ckey_macroDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST_MACROS, _listMacros);
 	DDX_Control(pDX, IDC_LIST_MACROS2, _listMacros2);
 	DDX_Control(pDX, IDC_LIST_COMM_PORT, _listCommPort);
+	DDX_Control(pDX, IDC_BUTTON_SERIAL_CONNECT, m_Commconnect);
 }
 
 BEGIN_MESSAGE_MAP(Ckey_macroDlg, CDialog)
@@ -800,11 +801,23 @@ void Ckey_macroDlg::OnBnClickedButtonMacroDebug()
 void Ckey_macroDlg::OnBnClickedButtonSerialConnect()
 {
 	CString comPort;
-	_listCommPort.GetLBText(_listCommPort.GetCurSel(), comPort);
-	if (m_cRsPort.initComport(comPort) == TRUE) {
-		AfxMessageBox(("%s A", comPort));
+	CString buttonText;
+	unsigned char sendText[] = "ASD";
+	unsigned char readText[100];
+	m_Commconnect.GetWindowTextA(buttonText);
+
+	if (buttonText == "연결") {
+		_listCommPort.GetLBText(_listCommPort.GetCurSel(), comPort);
+		if (m_cRsPort.initComport(comPort) == TRUE) {
+			AfxMessageBox(("%s A", comPort));
+			m_Commconnect.SetWindowTextA("보내기");
+		}
+		else AfxMessageBox(_T("WARNING : 포트를 여는데 실패하였습니다."));
 	}
-	else AfxMessageBox(_T("WARNING : 포트를 여는데 실패하였습니다."));
+	else {
+		m_cRsPort.ReadCommPort(readText, 8);
+		printf("%s", readText);
+	}
 }
 
 void Ckey_macroDlg::OnCbnSelchangeListCommPort()
